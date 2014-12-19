@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">levelbook</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="hello_world">Bienvenidos a LevelBook</string>
+    <string name="action_settings">Configuración</string>
+    <string name="tvCabecera">Como es nuestra primera versión te enseñaremos sólo a multiplicar</string>
+    <string name="tvNoteEdad">para niños entre 6 y 8 años</string>
+    <string name="tvNumeroEjercicio">Ejercicio número </string>
 
 </resources>
