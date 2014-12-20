@@ -7,5 +7,7 @@
     <string name="tvCabecera">Como es nuestra primera versión te enseñaremos sólo a multiplicar</string>
     <string name="tvNoteEdad">para niños entre 6 y 8 años</string>
     <string name="tvNumeroEjercicio">Ejercicio número </string>
+    <string name="tvOperador">X</string>
+    <string name="btVerificar">Verificar</string>
 
 </resources>
