@@ -16,29 +16,33 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 
     private final static String TAG = "Debug";
+    private static Integer numero1, numero2, numeroEjercicio;
+    private static String stringNumeroEjercicio;
+    private static TextView tvNumero1, tvNumero2, tvNumeroEjercicio;
+    private static EditText etRespuesta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Integer numeroEjercicio = 1;
-        final Integer numero1 = (int) (Math.random() * 10);
-        final Integer numero2 = (int) (Math.random() * 10);
+        numeroEjercicio = 1;
+        numero1 = (int) (Math.random() * 12);
+        numero2 = (int) (Math.random() * 5);
 
-        String stringNumeroEjercicio = getResources().getString(R.string.tvNumeroEjercicio) + " " + numeroEjercicio.toString();
+        stringNumeroEjercicio = getResources().getString(R.string.tvNumeroEjercicio) + " " + numeroEjercicio.toString();
 
-        TextView tvNumeroEjercicio = (TextView) findViewById(R.id.tvNumeroEjercicio);
+        tvNumeroEjercicio = (TextView) findViewById(R.id.tvNumeroEjercicio);
         tvNumeroEjercicio.setText(stringNumeroEjercicio);
 
-        TextView tvNumero1 = (TextView) findViewById(R.id.tvNumero1);
-        TextView tvNumero2 = (TextView) findViewById(R.id.tvNumero2);
+        tvNumero1 = (TextView) findViewById(R.id.tvNumero1);
+        tvNumero2 = (TextView) findViewById(R.id.tvNumero2);
 
         tvNumero1.setText(numero1.toString());
         tvNumero2.setText(numero2.toString());
 
         Button btVerificar = (Button) findViewById(R.id.btVerificar);
 
-        final EditText etRespuesta = (EditText) findViewById(R.id.etRespuesta);
+        etRespuesta = (EditText) findViewById(R.id.etRespuesta);
 
         btVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,19 +57,21 @@ public class MainActivity extends ActionBarActivity {
                     resultado = numero1 * numero2;
                     respuesta = Integer.parseInt(etRespuesta.getText().toString());
                     if(resultado == respuesta){
+
                         Toast.makeText(getApplicationContext(), "Bien", Toast.LENGTH_SHORT).show();
-                    /*
-                    numeroEjercicio++;
 
-                    stringNumeroEjercicio = getResources().getString(R.string.tvNumeroEjercicio) + " " + numeroEjercicio[0].toString();
-                    tvNumeroEjercicio.setText(stringNumeroEjercicio);
+                        etRespuesta.setText("");
+                        numeroEjercicio++;
 
-                    numero1 = (int) (Math.random()*10);
-                    numero2 = (int) (Math.random()*10);
+                        stringNumeroEjercicio = getResources().getString(R.string.tvNumeroEjercicio) + " " + numeroEjercicio.toString();
+                        tvNumeroEjercicio.setText(stringNumeroEjercicio);
 
-                    tvNumero1.setText(numero1[0].toString());
-                    tvNumero2.setText(numero2[0].toString());
-                    */
+                        numero1 = (int) (Math.random()*12);
+                        numero2 = (int) (Math.random()*5);
+
+                        tvNumero1.setText(numero1.toString());
+                        tvNumero2.setText(numero2.toString());
+
 
                     }
                     else{
