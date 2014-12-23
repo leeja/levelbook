@@ -1,5 +1,6 @@
 package com.jasoftsolutions.levelbook;
 
+import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,17 +16,23 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
-    private final static String TAG = "Debug";
-    private static Integer numero1, numero2, numeroEjercicio;
-    private static String stringNumeroEjercicio;
-    private static TextView tvNumero1, tvNumero2, tvNumeroEjercicio;
-    private static EditText etRespuesta;
+    private final static String TAG = "Debug Main Activity";
+    private  Integer numero1, numero2;
+    private static Integer numeroEjercicio, intentos ;
+    private  String stringNumeroEjercicio;
+    private  TextView tvNumero1, tvNumero2, tvNumeroEjercicio;
+    private  EditText etRespuesta;
+
+
+    public final static String NUMBER_EXERCISE = "numeroEjercicio";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         numeroEjercicio = 1;
+        intentos = 1;
         numero1 = (int) (Math.random() * 12);
         numero2 = (int) (Math.random() * 5);
 
@@ -49,8 +56,6 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
 
 
-                Log.e(TAG, etRespuesta.getText().toString());
-
                 if(etRespuesta.getText().toString() != null &&  (!etRespuesta.getText().toString().isEmpty())){
                     Integer resultado, respuesta;
 
@@ -58,7 +63,7 @@ public class MainActivity extends ActionBarActivity {
                     respuesta = Integer.parseInt(etRespuesta.getText().toString());
                     if(resultado == respuesta){
 
-                        Toast.makeText(getApplicationContext(), "Bien", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.good), Toast.LENGTH_SHORT).show();
 
                         etRespuesta.setText("");
                         numeroEjercicio++;
@@ -75,11 +80,32 @@ public class MainActivity extends ActionBarActivity {
 
                     }
                     else{
-                        Toast.makeText(getApplicationContext(), "Mal", Toast.LENGTH_SHORT).show();
+                        intentos++;
+
+                        if(intentos>=4){
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.numberIntents), Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getApplicationContext(), InfoUserActivity.class);
+                            Bundle b = new Bundle();
+                            intentos--;
+                            stringNumeroEjercicio = getResources().getString(R.string.tvNumeroEjercicio) + " " + numeroEjercicio.toString();
+                            tvNumeroEjercicio.setText(stringNumeroEjercicio);
+                            etRespuesta.setText("");
+                            b.putString(NUMBER_EXERCISE, numeroEjercicio.toString());
+                            i.putExtras(b);
+                            startActivity(i);
+                            numeroEjercicio = 1;
+                            intentos = 1;
+
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.bad), Toast.LENGTH_SHORT).show();
+                        }
+
+
                     }
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),"Ingrese Número", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.insertNumber), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -107,9 +133,29 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        //if (id == R.id.action_exit) {
+
+        //    finish();
+        //    return true;
+        //}
+
+        switch (id){
+            case R.id.action_records:
+                Intent i = new Intent(getApplicationContext(), RecordsActivity.class);
+                startActivity(i);
+                break;
+            case R.id.action_about:
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.about),Toast.LENGTH_LONG).show();
+                //return true;
+                break;
+            case R.id.action_exit:
+                finish();
+                //return true;
+                break;
+            default:
+                break;
         }
+
 
         return super.onOptionsItemSelected(item);
     }

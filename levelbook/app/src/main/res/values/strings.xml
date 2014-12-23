@@ -1,13 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">levelbook</string>
+    <string name="app_name">LevelBook</string>
     <string name="hello_world">Bienvenidos a LevelBook</string>
-    <string name="action_settings">Configuración</string>
+    <string name="menu_action_about">Acerca de...</string>
+    <string name="menu_action_exit">Salir</string>
+    <string name="menu_action_records">Records</string>
     <string name="tvCabecera">Como es nuestra primera versión te enseñaremos sólo a multiplicar</string>
     <string name="tvNoteEdad">para niños entre 6 y 8 años</string>
     <string name="tvNumeroEjercicio">Ejercicio número </string>
     <string name="tvOperador">X</string>
     <string name="btVerificar">Verificar</string>
+    <string name="about">www.jasoftsolutions.com</string>
+    <string name="good">bien</string>
+    <string name="bad">Mal, intente nuevamente</string>
+    <string name="insertNumber">Ingrese un número</string>
+    <string name="title_activity_records">Records</string>
+    <string name="action_settings">Settings</string>
+    <string name="msg_top50">Ranking Top 50 de los mejores en el mundo</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_info_user">Información del Usuario</string>
+    <string name="insertName">Ingrese sus Nombre:</string>
+    <string name="insertLastName">Ingrese sus Apellidos:</string>
+    <string name="insertSchool">Ingrese su Colegio:</string>
+    <string name="hint_name">Ej: José Alonso</string>
+    <string name="hint_lastName">Ej: Lee Hidalgo</string>
+    <string name="hint_school">Ej: Don Bosco - Piura</string>
+    <string name="numberIntents">Superó los 3 intentos, ha perdido</string>
+    <string name="btnSave">Guardar</string>
+    <string name="btnBackHome">Regresar al Inicio</string>
+
 
 </resources>
+
